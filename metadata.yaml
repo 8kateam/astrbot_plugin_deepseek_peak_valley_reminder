@@ -1,0 +1,6 @@
+name: astrbot_plugin_deepseek_peak_valley_reminder 
+display_name: Deepseek 峰谷时段提醒 
+desc: 用于提醒 Deepseek 现在是峰时计价还是谷时计价。 
+version: v0.2.0
+author: Midnight-2004 
+repo: 

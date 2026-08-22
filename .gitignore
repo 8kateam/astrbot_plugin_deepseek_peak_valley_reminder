@@ -1,0 +1,5 @@
+.opencode/
+__pycache__
+.ruff_cache
+.env
+astrbot_plugin_deepseek_peak_valley_reminder.zip

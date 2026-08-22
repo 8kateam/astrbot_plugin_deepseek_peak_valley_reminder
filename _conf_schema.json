@@ -1,0 +1,83 @@
+{
+  "enable": {
+    "description": "启用定时提醒",
+    "type": "bool",
+    "default": true,
+    "hint": "开启后将在峰谷切换点自动推送提醒"
+  },
+  "timezone": {
+    "description": "时区偏移（小时）",
+    "type": "int",
+    "default": 8,
+    "hint": "有效范围 -12 ~ 14，8 表示 UTC+8，负数为西时区（如 -5 表示 UTC-5），超出范围自动回退为 8"
+  },
+  "enable_weekend_valley": {
+    "description": "周末全天谷时计价",
+    "type": "bool",
+    "default": true,
+    "hint": "开启后周六与周日全天视为谷时计价，峰谷切换提醒仅在周一至周五触发"
+  },
+  "target_groups": {
+    "description": "推送目标群号列表",
+    "type": "list",
+    "default": [],
+    "hint": "填写 QQ 群号，如 [\"123456789\"]。通过 OneBot 原生 API 发送，发送 /dsid 可获取群号"
+  },
+  "target_users": {
+    "description": "推送目标 QQ 号列表（私聊）",
+    "type": "list",
+    "default": [],
+    "hint": "填写 QQ 号，如 [\"123456\"]。通过 OneBot 原生 API 发送，发送 /dsid 可获取 QQ 号"
+  },
+  "target_sessions": {
+    "description": "推送目标 unified_msg_origin 列表（高级）",
+    "type": "list",
+    "default": [],
+    "hint": "填写完整 session ID，如 aiocqhttp:GroupMessage:123456789。适用于其他平台，可通过 /sid 或 /dsid 获取"
+  },
+  "remind_points": {
+    "description": "提醒时点开关",
+    "type": "object",
+    "hint": "勾选需要在哪些切换点推送提醒（仅周一至周五触发，周末全天谷时无切换）",
+    "items": {
+      "peak_morning_start": {
+        "description": "9:00 峰时开始提醒",
+        "type": "bool",
+        "default": true
+      },
+      "valley_noon_start": {
+        "description": "12:00 谷时开始提醒",
+        "type": "bool",
+        "default": true
+      },
+      "peak_afternoon_start": {
+        "description": "14:00 峰时开始提醒",
+        "type": "bool",
+        "default": true
+      },
+      "valley_evening_start": {
+        "description": "18:00 谷时开始提醒",
+        "type": "bool",
+        "default": true
+      }
+    }
+  },
+  "peak_start_message": {
+    "description": "进入峰时的提醒消息（随机抽取一条）",
+    "type": "list",
+    "default": [
+      "⚡ DeepSeek API 已进入峰时计价时段（{time}）\n峰时时段：周一至周五 9:00-12:00, 14:00-18:00\n调用 API 费用较高，请注意控制用量。",
+      "⚠️ 当前为峰时计价（{time}）\nDeepSeek API 在 周一至周五 9:00-12:00 和 14:00-18:00 为峰时，费用较高。"
+    ],
+    "hint": "每次发送时随机抽取一条，支持 {time} 占位符（替换为当前时间 HH:MM）"
+  },
+  "valley_start_message": {
+    "description": "进入谷时的提醒消息（随机抽取一条）",
+    "type": "list",
+    "default": [
+      "💰 DeepSeek API 已进入谷时计价时段（{time}）\n谷时时段：周一至周五 12:00-14:00, 18:00-次日9:00，周六周日全天为谷时\n调用 API 费用较低，推荐此时使用。",
+      "✅ 当前为谷时计价（{time}）\nDeepSeek API 在 周一至周五 12:00-14:00、18:00-次日9:00，以及周六周日全天为谷时，费用优惠。"
+    ],
+    "hint": "每次发送时随机抽取一条，支持 {time} 占位符（替换为当前时间 HH:MM）"
+  }
+}
