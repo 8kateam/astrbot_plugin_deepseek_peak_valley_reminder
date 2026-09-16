@@ -79,5 +79,29 @@
       "✅ 当前为谷时计价（{time}）\nDeepSeek API 在 周一至周五 12:00-14:00、18:00-次日9:00，以及周六周日全天为谷时，费用优惠。"
     ],
     "hint": "每次发送时随机抽取一条，支持 {time} 占位符（替换为当前时间 HH:MM）"
+  },
+  "ds_peak_message": {
+    "description": "/ds 查询为峰时时的回复（可多条随机）",
+    "type": "list",
+    "default": [
+      "⚡ 当前为峰时计价（{time}）\n峰时时段：9:00-12:00, 14:00-18:00\n调用 API 费用较高。"
+    ],
+    "hint": "留空则使用内置默认文案，支持 {time} 占位符与 \\n 换行"
+  },
+  "ds_valley_message": {
+    "description": "/ds 查询为工作日谷时时的回复（可多条随机）",
+    "type": "list",
+    "default": [
+      "💰 当前为谷时计价（{time}）\n谷时时段：12:00-14:00, 18:00-次日9:00\n调用 API 费用较低。"
+    ],
+    "hint": "留空则使用内置默认文案，支持 {time} 占位符与 \\n 换行"
+  },
+  "ds_weekend_message": {
+    "description": "/ds 查询为周末谷时时的回复（可多条随机）",
+    "type": "list",
+    "default": [
+      "💰 当前为谷时计价（{time}）\n今天是周末，DeepSeek API 全天按谷时计价，费用优惠。"
+    ],
+    "hint": "留空则使用内置默认文案，支持 {time} 占位符与 \\n 换行"
   }
 }

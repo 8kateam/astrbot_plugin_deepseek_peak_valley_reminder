@@ -80,10 +80,13 @@ DeepSeek 峰谷时段提醒插件。根据当前时间自动判断 DeepSeek API 
 | `remind_points.valley_evening_start` | bool | `true` | 18:00 谷时开始提醒（仅工作日） |
 | `peak_start_message` | list | （内置两条） | 进入峰时的提醒文案，随机抽取一条 |
 | `valley_start_message` | list | （内置两条） | 进入谷时的提醒文案，随机抽取一条 |
+| `ds_peak_message` | list | （内置一条） | `/ds` 查询为峰时时的回复，可多条随机 |
+| `ds_valley_message` | list | （内置一条） | `/ds` 查询为工作日谷时时的回复，可多条随机 |
+| `ds_weekend_message` | list | （内置一条） | `/ds` 查询为周末谷时时的回复，可多条随机 |
 
 ### 文案占位符
 
-提醒文案支持 `{time}` 占位符，发送时会替换为当前时间（`HH:MM` 格式），例如：
+所有可自定义文案（定时提醒与 `/ds` 查询回复）均支持 `{time}` 占位符，发送时会替换为当前时间（`HH:MM` 格式）；在 WebUI 中书写 `\n` 会转换为真实换行，例如：
 
 ```
 ⚡ DeepSeek API 已进入峰时计价时段（{time}）
